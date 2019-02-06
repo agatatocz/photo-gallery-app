@@ -1,7 +1,9 @@
-import { FETCH_PHOTOS } from "./../actions/types";
+import { FETCH_PHOTOS, AUTHOR_TYPED } from "./../actions/types";
 
 const initialState = {
-  photos: []
+  photos: [],
+  filteredPhotos: [],
+  author: ""
 };
 
 export default (state = initialState, action) => {
@@ -9,7 +11,22 @@ export default (state = initialState, action) => {
     case FETCH_PHOTOS:
       return {
         ...state,
-        photos: action.payload
+        photos: action.payload,
+        filteredPhotos: action.payload
+      };
+
+    case AUTHOR_TYPED:
+      const text = action.payload;
+      const filteredPhotos = text
+        ? state.photos.filter(photo =>
+            photo.author.toLowerCase().includes(text.toLowerCase())
+          )
+        : state.photos;
+
+      return {
+        ...state,
+        author: text,
+        filteredPhotos
       };
 
     default:

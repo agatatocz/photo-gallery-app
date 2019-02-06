@@ -1,4 +1,4 @@
-import { FETCH_PHOTOS } from "./types";
+import { FETCH_PHOTOS, AUTHOR_TYPED } from "./types";
 
 export const fetchPhotos = () => dispatch => {
   fetch("https://picsum.photos/list")
@@ -10,4 +10,9 @@ export const fetchPhotos = () => dispatch => {
       })
     )
     .catch(e => console.log(e));
+};
+
+export const onAuthorTyped = text => {
+  console.log("action creator", text);
+  return { type: AUTHOR_TYPED, payload: text };
 };

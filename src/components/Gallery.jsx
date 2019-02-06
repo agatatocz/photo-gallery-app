@@ -4,12 +4,10 @@ import { fetchPhotos } from "./../actions/photosActions";
 
 class Gallery extends Component {
   componentDidMount() {
-    console.log("props: ", this.props);
     this.props.fetchPhotos();
   }
 
   render() {
-    console.log("props: ", this.props);
     return (
       <div className="gallery">
         {this.props.photos.map(photo => (
@@ -29,7 +27,7 @@ class Gallery extends Component {
 }
 
 const mapStateToProps = state => ({
-  photos: state.photos.photos
+  photos: state.photos.filteredPhotos
 });
 
 export default connect(
