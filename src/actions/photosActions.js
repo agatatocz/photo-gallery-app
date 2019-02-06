@@ -13,6 +13,5 @@ export const fetchPhotos = () => dispatch => {
 };
 
 export const onAuthorTyped = text => {
-  console.log("action creator", text);
   return { type: AUTHOR_TYPED, payload: text };
 };
