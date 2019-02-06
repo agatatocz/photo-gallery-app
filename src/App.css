@@ -1,0 +1,16 @@
+.gallery {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.photo {
+  text-align: center;
+  margin: 10px;
+}
+
+.photo .photo-author {
+  margin: 0;
+  font-size: 14px;
+  color: #aaa;
+}
