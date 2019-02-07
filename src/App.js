@@ -1,20 +1,19 @@
 import React, { Component } from "react";
-import { Provider } from "react-redux";
-import store from "./store";
+import { Switch, Route } from "react-router-dom";
 import "font-awesome/css/font-awesome.min.css";
 import "./App.css";
 import Gallery from "./components/Gallery";
-import NavBar from "./components/NavBar";
+import SelectedPhoto from "./components/SelectedPhoto";
 
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <div className="container">
-          <NavBar />
-          <Gallery />
-        </div>
-      </Provider>
+      <div className="container">
+        <Switch>
+          <Route path="/photo/:id" component={SelectedPhoto} />
+          <Route path="/" component={Gallery} />
+        </Switch>
+      </div>
     );
   }
 }

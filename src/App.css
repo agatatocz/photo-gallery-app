@@ -1,7 +1,13 @@
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
 .container {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
+  min-height: 100vh;
 }
 
 input.input-author {
@@ -37,4 +43,37 @@ input.input-author:focus {
   margin: 0;
   font-size: 14px;
   color: #aaa;
+}
+
+.selected-photo {
+  width: 90vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  /* background-image: url("/img/spinner.png");
+  background-repeat: no-repeat;
+  background-position: center; */
+}
+
+.selected-photo i {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+}
+
+.selected-photo img {
+  max-width: 100%;
+  max-height: 95vh;
+}
+
+@media (max-width: 340px) {
+  .photo {
+    width: 90%;
+  }
+
+  .photo img {
+    width: 100%;
+  }
 }

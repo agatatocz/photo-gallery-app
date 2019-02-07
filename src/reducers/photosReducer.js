@@ -1,34 +1,42 @@
-import { FETCH_PHOTOS, AUTHOR_TYPED } from "./../actions/types";
+import { FETCH_PHOTOS, AUTHOR_TYPED, PHOTO_SELECTED } from "./../actions/types";
 
 const initialState = {
-  photos: [],
+  allPhotos: [],
   filteredPhotos: [],
-  author: ""
+  author: "",
+  selectedPhoto: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    //-----------------------------------------------
     case FETCH_PHOTOS:
       return {
         ...state,
-        photos: action.payload,
+        allPhotos: action.payload,
         filteredPhotos: action.payload
       };
-
+    //-----------------------------------------------
     case AUTHOR_TYPED:
       const text = action.payload;
       const filteredPhotos = text
-        ? state.photos.filter(photo =>
+        ? state.allPhotos.filter(photo =>
             photo.author.toLowerCase().includes(text.toLowerCase())
           )
-        : state.photos;
+        : state.allPhotos;
 
       return {
         ...state,
         author: text,
         filteredPhotos
       };
-
+    //-----------------------------------------------
+    case PHOTO_SELECTED:
+      return {
+        ...state,
+        selectedPhoto: action.payload
+      };
+    //-----------------------------------------------
     default:
       return state;
   }

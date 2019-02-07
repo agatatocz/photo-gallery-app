@@ -1,4 +1,4 @@
-import { FETCH_PHOTOS, AUTHOR_TYPED } from "./types";
+import { FETCH_PHOTOS, AUTHOR_TYPED, PHOTO_SELECTED } from "./types";
 
 export const fetchPhotos = () => dispatch => {
   fetch("https://picsum.photos/list")
@@ -14,4 +14,8 @@ export const fetchPhotos = () => dispatch => {
 
 export const onAuthorTyped = text => {
   return { type: AUTHOR_TYPED, payload: text };
+};
+
+export const onPhotoSelected = photo => {
+  return { type: PHOTO_SELECTED, payload: photo };
 };
