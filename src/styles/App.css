@@ -1,0 +1,8 @@
+@import "./Gallery.css";
+@import "./NavBar.css";
+@import "./SelectedPhoto.css";
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}

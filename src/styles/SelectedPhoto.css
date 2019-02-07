@@ -1,0 +1,42 @@
+.selected-photo {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.selected-photo i {
+  font-size: 3em;
+  margin: 10px;
+}
+
+.selected-photo i.fa-spinner {
+  position: absolute;
+  z-index: -1;
+  left: 45%;
+  top: 35%;
+}
+
+.selected-photo i.fa-long-arrow-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 2em;
+}
+
+.selected-photo img {
+  max-width: 80vw;
+  max-height: 95vh;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #000;
+}

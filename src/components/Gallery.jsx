@@ -12,12 +12,15 @@ class Gallery extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="container">
         <NavBar />
         <div className="gallery">
           {this.props.photos.map(photo => (
             <div key={photo.id} className="photo">
               <Link to={`/photo/${photo.id}`}>
+                <div className="zoom-icon-div">
+                  <i className="fa fa-search-plus" aria-hidden="true" />
+                </div>
                 <img
                   src={`https://picsum.photos/300/300?image=${photo.id}`}
                   alt={photo.post_url}
@@ -30,7 +33,7 @@ class Gallery extends Component {
             </div>
           ))}
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }
