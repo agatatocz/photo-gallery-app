@@ -10,6 +10,7 @@ class App extends Component {
     return (
       <Switch>
         <Route path="/photo/:id" component={SelectedPhoto} />
+        <Route path="/page/:number" component={Gallery} />
         <Route path="/" component={Gallery} />
       </Switch>
     );

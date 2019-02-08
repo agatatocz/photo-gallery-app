@@ -1,0 +1,27 @@
+.pagination {
+  text-align: center;
+  padding: 10px;
+  color: #777;
+}
+
+.pagination ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination ul li {
+  margin: 5px;
+  cursor: pointer;
+}
+
+.pagination ul li:hover {
+  color: #222;
+}
+
+.pagination ul li.active {
+  color: #222;
+  text-decoration: underline;
+}

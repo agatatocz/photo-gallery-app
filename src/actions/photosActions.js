@@ -1,4 +1,9 @@
-import { FETCH_PHOTOS, AUTHOR_TYPED, PHOTO_SELECTED } from "./types";
+import {
+  FETCH_PHOTOS,
+  AUTHOR_TYPED,
+  PHOTO_SELECTED,
+  PAGE_CHANGED
+} from "./types";
 
 export const fetchPhotos = () => dispatch => {
   fetch("https://picsum.photos/list")
@@ -17,6 +22,9 @@ export const onAuthorTyped = text => {
 };
 
 export const onPhotoSelected = photo => {
-  console.log("action");
   return { type: PHOTO_SELECTED, payload: photo };
+};
+
+export const setCurrentPage = page => {
+  return { type: PAGE_CHANGED, payload: page };
 };

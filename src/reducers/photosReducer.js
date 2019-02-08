@@ -1,10 +1,17 @@
-import { FETCH_PHOTOS, AUTHOR_TYPED, PHOTO_SELECTED } from "./../actions/types";
+import {
+  FETCH_PHOTOS,
+  AUTHOR_TYPED,
+  PHOTO_SELECTED,
+  PAGE_CHANGED
+} from "./../actions/types";
 
 const initialState = {
   allPhotos: [],
   filteredPhotos: [],
   author: "",
-  selectedPhoto: null
+  selectedPhoto: null,
+  pageSize: 12,
+  currentPage: 1
 };
 
 export default (state = initialState, action) => {
@@ -32,10 +39,15 @@ export default (state = initialState, action) => {
       };
     //-----------------------------------------------
     case PHOTO_SELECTED:
-      console.log("reducer");
       return {
         ...state,
         selectedPhoto: action.payload
+      };
+    //-----------------------------------------------
+    case PAGE_CHANGED:
+      return {
+        ...state,
+        currentPage: action.payload
       };
     //-----------------------------------------------
     default:
