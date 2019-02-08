@@ -17,5 +17,6 @@ export const onAuthorTyped = text => {
 };
 
 export const onPhotoSelected = photo => {
+  console.log("action");
   return { type: PHOTO_SELECTED, payload: photo };
 };

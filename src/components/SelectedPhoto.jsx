@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import KeyboardEventHandler from "react-keyboard-event-handler";
+
 import { fetchPhotos } from "./../actions/photosActions";
+import LinkIcon from "./common/LinkIcon";
+import Image from "./common/Image";
 
 class SelectedPhoto extends Component {
   componentDidMount() {
@@ -12,35 +14,34 @@ class SelectedPhoto extends Component {
   }
 
   getPhoto = () => {
-    const id = Number(this.props.match.params.id);
+    const id = this.getId();
     const { photos, selectedPhoto } = this.props;
+
     if (selectedPhoto && id === selectedPhoto.id)
       return (
-        <img
-          src={`https://picsum.photos/
-          ${selectedPhoto.width}/
-          ${selectedPhoto.height}
-          ?image=${id}`}
+        <Image
+          width={selectedPhoto.width}
+          height={selectedPhoto.height}
+          id={id}
           alt={selectedPhoto.post_url}
         />
       );
     else {
       const photo = photos ? photos.find(photo => photo.id === id) : null;
-      return (
-        <React.Fragment>
-          {photo ? (
-            <img
-              src={`https://picsum.photos/
-              ${photo.width}/
-              ${photo.height}
-                ?image=${id}`}
-              alt={photo.post_url}
-            />
-          ) : null}
-        </React.Fragment>
-      );
+      if (photo)
+        return (
+          <Image
+            width={photo.width}
+            height={photo.height}
+            id={id}
+            alt={photo.post_url}
+          />
+        );
+      return null;
     }
   };
+
+  getId = () => Number(this.props.match.params.id);
 
   getNextId = id => {
     const { photos } = this.props;
@@ -63,7 +64,7 @@ class SelectedPhoto extends Component {
   };
 
   handleKey = key => {
-    const id = Number(this.props.match.params.id);
+    const id = this.getId();
 
     switch (key) {
       case "left":
@@ -82,7 +83,7 @@ class SelectedPhoto extends Component {
   };
 
   render() {
-    const id = Number(this.props.match.params.id);
+    const id = this.getId();
     const nextId = this.getNextId(id);
     const prevId = this.getPrevId(id);
     return (
@@ -94,14 +95,13 @@ class SelectedPhoto extends Component {
 
         <div className="selected-photo">
           <div>
-            <Link to="/">
-              <i className="fa fa-long-arrow-left" aria-hidden="true" />
-            </Link>
+            <LinkIcon path="/" className="fa fa-long-arrow-left" />
 
             {prevId ? (
-              <Link to={`/photo/${prevId}`}>
-                <i className="fa fa-angle-left" aria-hidden="true" />
-              </Link>
+              <LinkIcon
+                path={`/photo/${prevId}`}
+                className="fa fa-angle-left"
+              />
             ) : (
               <i />
             )}
@@ -111,9 +111,7 @@ class SelectedPhoto extends Component {
           {this.getPhoto()}
 
           {nextId ? (
-            <Link to={`/photo/${nextId}`}>
-              <i className="fa fa-angle-right" aria-hidden="true" />
-            </Link>
+            <LinkIcon path={`/photo/${nextId}`} className="fa fa-angle-right" />
           ) : (
             <i />
           )}

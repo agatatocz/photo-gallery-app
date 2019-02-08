@@ -32,6 +32,7 @@ export default (state = initialState, action) => {
       };
     //-----------------------------------------------
     case PHOTO_SELECTED:
+      console.log("reducer");
       return {
         ...state,
         selectedPhoto: action.payload

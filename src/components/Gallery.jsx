@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { fetchPhotos, onPhotoSelected } from "./../actions/photosActions";
 
 import NavBar from "./NavBar";
+import Image from "./common/Image";
 
 class Gallery extends Component {
   componentDidMount() {
@@ -18,13 +19,18 @@ class Gallery extends Component {
           {this.props.photos.map(photo => (
             <div key={photo.id} className="photo">
               <Link to={`/photo/${photo.id}`}>
-                <div className="zoom-icon-div">
+                <div
+                  className="zoom-icon-div"
+                  onClick={() => this.props.onPhotoSelected(photo)}
+                >
                   <i className="fa fa-search-plus" aria-hidden="true" />
                 </div>
-                <img
-                  src={`https://picsum.photos/300/300?image=${photo.id}`}
+
+                <Image
+                  width="300"
+                  height="300"
+                  id={photo.id}
                   alt={photo.post_url}
-                  onClick={() => this.props.onPhotoSelected(photo)}
                 />
               </Link>
               <p key={photo.id} className="photo-author">
