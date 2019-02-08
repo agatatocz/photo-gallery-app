@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import KeyboardEventHandler from "react-keyboard-event-handler";
 import { fetchPhotos } from "./../actions/photosActions";
 
 class SelectedPhoto extends Component {
@@ -17,8 +18,8 @@ class SelectedPhoto extends Component {
       return (
         <img
           src={`https://picsum.photos/
-          ${parseInt(selectedPhoto.width / 3)}/
-          ${parseInt(selectedPhoto.height / 3)}
+          ${selectedPhoto.width}/
+          ${selectedPhoto.height}
           ?image=${id}`}
           alt={selectedPhoto.post_url}
         />
@@ -30,8 +31,8 @@ class SelectedPhoto extends Component {
           {photo ? (
             <img
               src={`https://picsum.photos/
-              ${parseInt(photo.width / 3)}/
-              ${parseInt(photo.height / 3)}
+              ${photo.width}/
+              ${photo.height}
                 ?image=${id}`}
               alt={photo.post_url}
             />
@@ -61,17 +62,42 @@ class SelectedPhoto extends Component {
     }
   };
 
+  handleKey = key => {
+    const id = Number(this.props.match.params.id);
+
+    switch (key) {
+      case "left":
+        const prevId = this.getPrevId(id);
+        if (prevId) this.props.history.push(`/photo/${prevId}`);
+        break;
+
+      case "right":
+        const nextId = this.getNextId(id);
+        if (nextId) this.props.history.push(`/photo/${nextId}`);
+        break;
+
+      default:
+        return;
+    }
+  };
+
   render() {
     const id = Number(this.props.match.params.id);
     const nextId = this.getNextId(id);
     const prevId = this.getPrevId(id);
     return (
       <React.Fragment>
+        <KeyboardEventHandler
+          handleKeys={["left", "right"]}
+          onKeyEvent={key => this.handleKey(key)}
+        />
+
         <div className="selected-photo">
           <div>
             <Link to="/">
               <i className="fa fa-long-arrow-left" aria-hidden="true" />
             </Link>
+
             {prevId ? (
               <Link to={`/photo/${prevId}`}>
                 <i className="fa fa-angle-left" aria-hidden="true" />
