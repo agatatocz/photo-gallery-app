@@ -9,7 +9,7 @@ import {
 
 import NavBar from "./NavBar";
 import Image from "./common/Image";
-import Pagination from "./common/Pagination";
+import Pagination from "./Pagination";
 
 class Gallery extends Component {
   componentWillMount() {
@@ -17,8 +17,8 @@ class Gallery extends Component {
       this.props.setCurrentPage(this.getPage());
   }
 
-  componentDidMount() {
-    if (!this.props.allPhotos.length) this.props.fetchPhotos();
+  async componentDidMount() {
+    if (!this.props.allPhotos.length) await this.props.fetchPhotos();
   }
 
   getPage = () => Number(this.props.match.params.number);

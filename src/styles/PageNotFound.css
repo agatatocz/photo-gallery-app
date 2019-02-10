@@ -1,0 +1,13 @@
+.to-gallery-div {
+  width: 140px;
+}
+
+.to-gallery-div i {
+  padding: 4px;
+  float: left;
+}
+
+.to-gallery-div p {
+  margin: 0;
+  float: left;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import KeyboardEventHandler from "react-keyboard-event-handler";
+import { Redirect } from "react-router-dom";
 
 import { fetchPhotos } from "./../actions/photosActions";
 import LinkIcon from "./common/LinkIcon";
@@ -16,7 +17,6 @@ class SelectedPhoto extends Component {
   getPhoto = () => {
     const id = this.getId();
     const { photos, selectedPhoto } = this.props;
-
     if (selectedPhoto && id === selectedPhoto.id)
       return (
         <Image
@@ -37,7 +37,8 @@ class SelectedPhoto extends Component {
             alt={photo.post_url}
           />
         );
-      return null;
+
+      return !!photos.length ? <Redirect to="/pageNotFound" /> : null;
     }
   };
 
@@ -95,7 +96,10 @@ class SelectedPhoto extends Component {
 
         <div className="selected-photo">
           <div>
-            <LinkIcon path="/" className="fa fa-long-arrow-left" />
+            <LinkIcon
+              path={`/page/${this.props.currentPage}`}
+              className="fa fa-long-arrow-left"
+            />
 
             {prevId ? (
               <LinkIcon
@@ -123,7 +127,8 @@ class SelectedPhoto extends Component {
 
 const mapStateToProps = state => ({
   photos: state.photos.allPhotos,
-  selectedPhoto: state.photos.selectedPhoto
+  selectedPhoto: state.photos.selectedPhoto,
+  currentPage: state.photos.currentPage
 });
 
 export default connect(

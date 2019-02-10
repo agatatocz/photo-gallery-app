@@ -49,6 +49,7 @@ export default (state = initialState, action) => {
         ...state,
         currentPage: action.payload
       };
+
     //-----------------------------------------------
     default:
       return state;

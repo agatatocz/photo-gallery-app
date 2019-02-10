@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import _ from "lodash";
-import { setCurrentPage } from "../../actions/photosActions";
+import { setCurrentPage } from "../actions/photosActions";
 
 class Pagination extends Component {
+  //returns array of page numbers, e.g. [1, 2, 3, ... n]
   getPages = () => {
-    const numberOfPages = Math.ceil(this.props.count / this.props.pageSize);
+    const { count, pageSize } = this.props;
+    const numberOfPages = Math.ceil(count / pageSize);
     return _.range(1, numberOfPages + 1);
   };
 
@@ -36,6 +39,8 @@ class Pagination extends Component {
 
   render() {
     const pages = this.getPages();
+    if (pages.length && !pages.includes(this.props.currentPage))
+      return <Redirect to="/pageNotFound" />;
     return (
       <div className="pagination">
         <ul>
