@@ -10,6 +10,7 @@ import NavBar from "./NavBar";
 import Pagination from "./Pagination";
 import "../styles/Gallery.css";
 import GalleryImage from "./GalleryImage";
+import Footer from "./Footer";
 
 class Gallery extends Component {
   componentWillMount() {
@@ -46,6 +47,7 @@ class Gallery extends Component {
           ))}
         </div>
         <Pagination history={this.props.history} />
+        <Footer />
       </div>
     );
   }
