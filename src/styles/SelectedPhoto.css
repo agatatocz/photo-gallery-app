@@ -15,8 +15,10 @@
 .selected-photo i.fa-spinner {
   position: absolute;
   z-index: 1;
-  left: 45%;
-  top: 35%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
 }
 
 .selected-photo i.fa-long-arrow-left {
