@@ -2,7 +2,8 @@ import {
   FETCH_PHOTOS,
   AUTHOR_TYPED,
   PHOTO_SELECTED,
-  PAGE_CHANGED
+  PAGE_CHANGED,
+  PAGE_SIZE_CHANGED
 } from "./types";
 
 export const fetchPhotos = () => dispatch => {
@@ -27,4 +28,8 @@ export const onPhotoSelected = photo => {
 
 export const setCurrentPage = page => {
   return { type: PAGE_CHANGED, payload: page };
+};
+
+export const setPageSize = size => {
+  return { type: PAGE_SIZE_CHANGED, payload: size };
 };

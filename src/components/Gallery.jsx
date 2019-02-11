@@ -34,7 +34,7 @@ class Gallery extends Component {
     const photosOnPage = this.getPhotosOnPage();
     return (
       <div className="container">
-        <NavBar />
+        <NavBar history={this.props.history} />
         <div className="gallery">
           {photosOnPage.map(photo => (
             <GalleryImage

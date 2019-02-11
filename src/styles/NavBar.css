@@ -1,3 +1,6 @@
+.filter-nav-bar {
+}
+
 input.input-author {
   border: none;
   border-bottom: 0.5px solid #aaa;
@@ -7,7 +10,8 @@ input.input-author {
   padding-left: 5px;
 }
 
-input.input-author:focus {
+input.input-author:focus,
+.page-size-select select:focus {
   outline: none;
   border-bottom: 0.5px solid #777;
 }
@@ -15,4 +19,17 @@ input.input-author:focus {
 .fa-search {
   color: #aaa;
   font-size: 14px;
+}
+
+.page-size-select {
+  float: right;
+  color: #777;
+  font-family: inherit;
+}
+
+.page-size-select select {
+  border: none;
+  border-bottom: 0.5px solid #aaa;
+  font-family: inherit;
+  font-size: 0.8em;
 }
