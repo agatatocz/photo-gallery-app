@@ -9,6 +9,11 @@ import Image from "./common/Image";
 import "../styles/SelectedPhoto.css";
 
 class SelectedPhoto extends Component {
+  constructor(props) {
+    super(props);
+    this.loadingIcon = React.createRef();
+  }
+
   componentDidMount() {
     if (!this.props.photos.length) {
       this.props.fetchPhotos();
@@ -25,6 +30,9 @@ class SelectedPhoto extends Component {
           height={selectedPhoto.height}
           id={id}
           alt={selectedPhoto.post_url}
+          onLoad={() => {
+            this.loadingIcon.current.style.display = "none";
+          }}
         />
       );
     else {
@@ -36,6 +44,9 @@ class SelectedPhoto extends Component {
             height={photo.height}
             id={id}
             alt={photo.post_url}
+            onLoad={() => {
+              this.loadingIcon.current.style.display = "none";
+            }}
           />
         );
 
@@ -112,7 +123,10 @@ class SelectedPhoto extends Component {
             )}
           </div>
 
-          <i className="fa fa-spinner fa-pulse fa-3x fa-fw" />
+          <i
+            ref={this.loadingIcon}
+            className="fa fa-spinner fa-pulse fa-3x fa-fw"
+          />
           {this.getPhoto()}
 
           {nextId ? (

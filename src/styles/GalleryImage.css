@@ -1,29 +1,20 @@
-.photo-div {
-  text-align: center;
+.photo-container-div {
   margin: 10px;
+}
+
+.photo-div {
   position: relative;
 }
 
-.photo-div > div {
-  opacity: 1;
-  transition: 0.5s ease;
-}
-
-.photo-div > div:hover {
-  opacity: 0.6;
-}
-
-.photo-div .load-icon-div {
-  z-index: 2;
+.load-icon-div {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 1;
 }
 
-.photo-div i.fa-spinner {
+.load-icon-div i.fa-spinner {
   position: absolute;
   font-size: 2em;
   top: 50%;
@@ -31,16 +22,33 @@
   transform: translate(-50%, -50%);
 }
 
-.photo-div .zoom-icon-div {
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
+.photo-div {
+  height: fit-content;
+}
+
+.image-div {
   transition: 0.5s ease;
 }
 
-.photo-div i.fa-search-plus {
+.image-div:hover {
+  opacity: 0.5;
+}
+
+.zoom-icon-div {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s ease;
+}
+
+.zoom-icon-div:hover {
+  z-index: 1;
+}
+
+.zoom-icon-div i.fa-search-plus {
   position: absolute;
   font-size: 2em;
   top: 50%;
@@ -48,11 +56,11 @@
   transform: translate(-50%, -50%);
 }
 
-.photo-div .zoom-icon-div:hover {
-  opacity: 1;
+.author-div {
+  text-align: center;
 }
 
-.photo-div .photo-author {
+.author-div p {
   margin: 0;
   font-size: 14px;
   color: #aaa;
@@ -60,12 +68,12 @@
   transition: 0.5s ease;
 }
 
-.photo-div .photo-author:hover {
+.author-div p:hover {
   color: #000;
 }
 
 @media (max-width: 340px) {
-  .photo-div {
+  .photo-container-div {
     width: 90%;
   }
 
