@@ -1,0 +1,75 @@
+.photo-div {
+  text-align: center;
+  margin: 10px;
+  position: relative;
+}
+
+.photo-div > div {
+  opacity: 1;
+  transition: 0.5s ease;
+}
+
+.photo-div > div:hover {
+  opacity: 0.6;
+}
+
+.photo-div .load-icon-div {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+}
+
+.photo-div i.fa-spinner {
+  position: absolute;
+  font-size: 2em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.photo-div .zoom-icon-div {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.photo-div i.fa-search-plus {
+  position: absolute;
+  font-size: 2em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.photo-div .zoom-icon-div:hover {
+  opacity: 1;
+}
+
+.photo-div .photo-author {
+  margin: 0;
+  font-size: 14px;
+  color: #aaa;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.photo-div .photo-author:hover {
+  color: #000;
+}
+
+@media (max-width: 340px) {
+  .photo-div {
+    width: 90%;
+  }
+
+  .photo-div img {
+    width: 100%;
+  }
+}

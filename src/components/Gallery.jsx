@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   fetchPhotos,
@@ -8,8 +7,9 @@ import {
 } from "./../actions/photosActions";
 
 import NavBar from "./NavBar";
-import Image from "./common/Image";
 import Pagination from "./Pagination";
+import "../styles/Gallery.css";
+import GalleryImage from "./GalleryImage";
 
 class Gallery extends Component {
   componentWillMount() {
@@ -37,26 +37,12 @@ class Gallery extends Component {
         <NavBar />
         <div className="gallery">
           {photosOnPage.map(photo => (
-            <div key={photo.id} className="photo">
-              <Link to={`/photo/${photo.id}`}>
-                <div
-                  className="zoom-icon-div"
-                  onClick={() => this.props.onPhotoSelected(photo)}
-                >
-                  <i className="fa fa-search-plus" aria-hidden="true" />
-                </div>
-
-                <Image
-                  width="300"
-                  height="300"
-                  id={photo.id}
-                  alt={photo.post_url}
-                />
-              </Link>
-              <p key={photo.id} className="photo-author">
-                {photo.author}
-              </p>
-            </div>
+            <GalleryImage
+              key={photo.id}
+              photo={photo}
+              width="300"
+              height="300"
+            />
           ))}
         </div>
         <Pagination history={this.props.history} />
@@ -65,6 +51,7 @@ class Gallery extends Component {
   }
 }
 
+//----------- Redux -------------
 const mapStateToProps = state => ({
   photos: state.photos.filteredPhotos,
   allPhotos: state.photos.filteredPhotos,

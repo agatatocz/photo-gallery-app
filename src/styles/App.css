@@ -1,8 +1,3 @@
-@import "./Gallery.css";
-@import "./NavBar.css";
-@import "./SelectedPhoto.css";
-@import "./Pagination.css";
-
 #root {
   width: 100%;
   min-height: 100vh;

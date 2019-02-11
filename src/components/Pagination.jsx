@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import _ from "lodash";
 import { setCurrentPage } from "../actions/photosActions";
+import "../styles/Pagination.css";
 
 class Pagination extends Component {
   //returns array of page numbers, e.g. [1, 2, 3, ... n]

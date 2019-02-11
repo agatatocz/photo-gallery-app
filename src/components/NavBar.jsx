@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { onAuthorTyped } from "../actions/photosActions";
 import _ from "lodash";
+import { onAuthorTyped } from "../actions/photosActions";
+import "../styles/NavBar.css";
 
 class NavBar extends Component {
   getDataList = () => {

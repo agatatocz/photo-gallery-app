@@ -6,6 +6,7 @@ import { Redirect } from "react-router-dom";
 import { fetchPhotos } from "./../actions/photosActions";
 import LinkIcon from "./common/LinkIcon";
 import Image from "./common/Image";
+import "../styles/SelectedPhoto.css";
 
 class SelectedPhoto extends Component {
   componentDidMount() {
